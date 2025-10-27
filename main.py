@@ -4,6 +4,8 @@ from constants import *
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    clock = pygame.time.Clock()
+    dt = 0
 
     black = (0, 0, 0)
 
@@ -15,8 +17,12 @@ def main():
 
         screen.fill(black)
         
+        #redraw screen
         pygame.display.flip()
 
+        #set FPS to 60 and convert to seconds
+        dt = clock.tick(60) /1000
+        
     pygame.quit()
 
     print(
