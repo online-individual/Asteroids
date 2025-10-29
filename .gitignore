@@ -6,5 +6,20 @@ dist/
 wheels/
 *.egg-info
 
+# Environments
+.env
+
 # Virtual environments
 .venv
+
+# Node.js projects
+node_modules/
+
+#Compiled projects
+target/
+build/
+
+# Gen files
+*.log
+*.tmp 
+*.swp
