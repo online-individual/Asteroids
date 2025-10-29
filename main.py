@@ -17,20 +17,23 @@ def main():
 
     running = True
     while running:
+        #set FPS to 60 and convert to seconds
+        dt = clock.tick(60) /1000
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
         
         screen.fill(black)
         
+        player.update(dt)
+
         #render player
         player.draw(screen)
         
         #redraw screen
         pygame.display.flip()
 
-        #set FPS to 60 and convert to seconds
-        dt = clock.tick(60) /1000
         
     pygame.quit()
 
