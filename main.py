@@ -6,12 +6,16 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
+    
     dt = 0
-
-    black = (0, 0, 0)
 
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
+
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    Player.containers = (updatable, drawable)
 
     player = Player(x, y)
 
@@ -24,12 +28,13 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
         
-        screen.fill(black)
+        screen.fill((0, 0, 0))
         
-        player.update(dt)
+        updatable.update(dt)
 
-        #render player
-        player.draw(screen)
+        #render objs
+        for sprite in drawable:
+            sprite.draw(screen)
         
         #redraw screen
         pygame.display.flip()
@@ -48,3 +53,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
