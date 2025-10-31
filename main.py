@@ -1,6 +1,8 @@
 import pygame
+import sys
 from constants import *
 from player import *
+from circleshape import *
 from asteroid import Asteroid
 from asteroidfield import *
 
@@ -41,6 +43,11 @@ def main():
         #render objs
         for sprite in drawable:
             sprite.draw(screen)
+
+        for asteroid in asteroids:
+            if asteroid.check_collision(player) == True:
+                print("Game over!")
+                sys.exit()
         
         #redraw screen
         pygame.display.flip()
